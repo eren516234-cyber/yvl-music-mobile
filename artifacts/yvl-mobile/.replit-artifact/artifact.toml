@@ -1,0 +1,26 @@
+kind = "mobile"
+previewPath = "/mobile/"
+title = "YVL Music Mobile"
+version = "1.0.0"
+id = "artifacts/yvl-mobile"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+name = "expo"
+paths = [ "/mobile/" ]
+localPort = 24486
+ensurePreviewReachable = "/status"
+
+[services.development]
+run = "pnpm --filter @workspace/yvl-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/yvl-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/yvl-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "24486"
+BASE_PATH = "/mobile/"
